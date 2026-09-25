@@ -1,0 +1,38 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@font-face {
+    font-family: 'cairo';
+    src: url('../../public/fonts/Cairo/Cairo-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'cairo-bold';
+    src: url('../../public/fonts/Cairo/Cairo-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@theme {
+    --font-sans: 'cairo', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --main-bg: #fffdf8;
+    --color-brand: #961607;
+    --color-brand-second: #d97e01;
+    --color-brand-third: #faf6ec;
+    --color-gold: #C9A44A;
+    --color-ember: #C1272D;
+    --color-main-text: #e9e3d3;
+    --color-second-text: #b8ad92;
+    --color-button-text: #1a1208;
+    --color-brand-dark: #8e0202;
+    --color-brand-second-dark: #b54c0d;
+    --color-brand-text: #241f1a;
+}
