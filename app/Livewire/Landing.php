@@ -17,7 +17,7 @@ class Landing extends Component
                 'description' => 'اكتشف مجموعة واسعة من الكتب والإصدارات...',
                 'url' => '/books',
                 'image' => 'books.jpg',
-                'icon' => 'fa-solid fa-book',
+                'icon' => 'fa-solid fa-book-open',
                 'value' => 1200,
             ],
             [

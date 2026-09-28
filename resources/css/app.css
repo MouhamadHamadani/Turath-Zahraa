@@ -23,7 +23,7 @@
     --font-sans: 'cairo', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
-    --main-bg: #fffdf8;
+    --color-main-bg: #fffdf8;
     --color-brand: #961607;
     --color-brand-second: #d97e01;
     --color-brand-third: #faf6ec;
@@ -31,6 +31,7 @@
     --color-ember: #C1272D;
     --color-main-text: #e9e3d3;
     --color-second-text: #b8ad92;
+    --color-third-text: #cfc7b2;
     --color-button-text: #1a1208;
     --color-brand-dark: #8e0202;
     --color-brand-second-dark: #b54c0d;
