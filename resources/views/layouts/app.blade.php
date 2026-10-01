@@ -25,17 +25,17 @@
 
   {{-- Footer --}}
   <footer class="bg-[#0b1410] text-second-text py-6">
-    <div class="container max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
-      <div>
-        <div class="flex items-center gap-2 mb-4">
+    <div class="container max-w-7xl mx-auto grid sm:grid-cols-2 grid-cols-2 lg:grid-cols-4 gap-8 mb-10 px-7">
+      <div class="col-span-2 sm:col-span-1 sm:border-b-0 border-b border-white/10 pb-4 sm:pb-0">
+        <div class="flex sm:flex-row flex-col items-center gap-2 mb-4">
           <div class="w-12 h-12 mb-4 rounded-full p-1 bg-[#fdfbf5]">
             <img src="{{ asset('images/logo_2_bg.png') }}" alt="Logo" class="w-full h-full object-contain">
           </div>
-          <h3 class="text-lg font-semibold mb-2 max-w-40 text-main-text">مؤسسة إحياء تراث الصديقة الشهيدة (ع)</h3>
+          <h3 class="text-sm font-semibold mb-2 sm:max-w-40 text-main-text">مؤسسة إحياء تراث الصديقة الشهيدة (ع)</h3>
         </div>
-        <p class="text-sm text-second-text">مؤسسة بحثية تعليمية غير ربحية، مقرها النجف الأشرف، تعنى بجمع وتوثيق وإحياء
+        <p class="sm:text-sm text-xs text-second-text sm:text-start text-center">مؤسسة بحثية تعليمية غير ربحية، مقرها النجف الأشرف، تعنى بجمع وتوثيق وإحياء
           التراث الفاطمي.</p>
-        <div class="flex space-x-4 mt-5">
+        <div class="flex space-x-4 mt-5 sm:justify-start justify-center">
           <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="hover:text-gray-300"><i class="fab fa-twitter"></i></a>
           <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
@@ -60,7 +60,7 @@
           <li><a href="{{ route('explore') }}" class="hover:underline">التبرعات والدعم</a></li>
         </ul>
       </div>
-      <div>
+      <div class="col-span-2 sm:col-span-1 sm:border-t-0 border-t border-white/10 pt-4 sm:pt-0">
         <h3 class="text-lg font-semibold mb-2 text-gold">تواصل معنا</h3>
         <div class="space-y-2 text-third-text">
           <p class="text-sm">
@@ -76,7 +76,7 @@
         </div>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between border-t border-white/10 pt-4">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between border-t border-white/10 pt-4 px-7">
       <p class="text-sm">&copy; {{ date('Y') }} مؤسسة إحياء تراث الصديقة الشهيدة (ع). جميع الحقوق محفوظة.</p>
       <div class="mt-4 md:mt-0 space-x-4">
         <a href="#" class="hover:underline text-sm">سياسة الخصوصية</a>

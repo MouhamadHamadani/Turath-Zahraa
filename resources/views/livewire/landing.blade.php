@@ -58,7 +58,7 @@
           class="bg-brand-third shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 flex justify-between items-center sm:block">
           {{-- <img src="{{ asset('images/widgets/' . $widget['image']) }}" alt="{{ $widget['title'] }}"
             class="w-full h-48 object-cover rounded-md"> --}}
-          <div class="flex items-center gap-4">
+          <div class="sm:block flex items-center gap-4">
             <div class="w-16 h-16 rounded-md bg-ember/10 flex items-center justify-center">
               <i class="{{ $widget['icon'] }} text-2xl text-ember"></i>
             </div>
