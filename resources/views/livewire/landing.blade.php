@@ -42,7 +42,7 @@
     </p>
     <div class="mt-8 text-center">
       <a href="{{ route('about-us') }}" wire:navigate
-        class="text-ember text-sm hover:text-gold duration-300 mx-auto">إقرأ المزيد <i
+        class="text-ember text-sm hover:text-gold duration-300 mx-auto">اقرأ المزيد <i
           class="fas fa-arrow-left mr-2"></i></a>
     </div>
   </div>

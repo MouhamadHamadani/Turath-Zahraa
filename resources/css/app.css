@@ -3,21 +3,13 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
-@font-face {
-    font-family: 'cairo';
-    src: url('../../public/fonts/Cairo/Cairo-Regular.ttf') format('truetype');
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-}
+@font-face { font-family: 'Cairo'; src: url('/fonts/Cairo/Cairo-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Cairo'; src: url('/fonts/Cairo/Cairo-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Cairo'; src: url('/fonts/Cairo/Cairo-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Cairo'; src: url('/fonts/Cairo/Cairo-ExtraBold.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+@font-face { font-family: 'Cairo'; src: url('/fonts/Cairo/Cairo-Black.woff2') format('woff2'); font-weight: 900; font-display: swap; }
 
-@font-face {
-    font-family: 'cairo-bold';
-    src: url('../../public/fonts/Cairo/Cairo-Bold.ttf') format('truetype');
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-}
+@theme { --font-sans: 'Cairo', ui-sans-serif, system-ui, sans-serif; }
 
 @theme {
     --font-sans: 'cairo', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
