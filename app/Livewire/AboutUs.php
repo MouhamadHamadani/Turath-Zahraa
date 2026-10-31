@@ -2,81 +2,52 @@
 
 namespace App\Livewire;
 
+use App\Models\Book;
+use App\Models\Milestone;
+use App\Models\Page;
+use App\Models\Publication;
+use App\Settings\GeneralSettings;
+use App\Settings\HomeStatsSettings;
+use Filament\Forms\Components\RichEditor\RichContentRenderer;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\HtmlString;
 use Livewire\Component;
 
 class AboutUs extends Component
 {
-    public array $timeline = [
-        [
-            'year' => '2020',
-            'title' => 'تأسيس المؤسسة',
-            'description' => 'تأسست مؤسسة إحياء تراث الصديقة الشهيدة بهدف حفظ التراث الثقافي والتاريخي وتوثيقه.',
-            'image' => 'foundation.jpg',
-        ],
-        [
-            'year' => '2021',
-            'title' => 'بدء المبادرات التعليمية',
-            'description' => 'أطلقت المؤسسة ورش العمل والبرامج التعليمية لتعزيز الوعي بالتراث بين الأجيال الجديدة.',
-            'image' => 'education.jpg',
-        ],
-        [
-            'year' => '2022',
-            'title' => 'توسيع التوثيق والأرشفة',
-            'description' => 'بدأت المؤسسة بجمع المواد التراثية وتوثيقها وأرشفتها لإتاحتها للباحثين والمهتمين.',
-            'image' => 'archiving.jpg',
-        ],
-    ];
-
-    public $info = [];
-    public $goals = [];
-
-    public function mount()
+    /**
+     * The small figures under the intro. A figure with no value is left out.
+     *
+     * @return array<int, array{title: string, value: string}>
+     */
+    protected function info(GeneralSettings $general, HomeStatsSettings $stats): array
     {
-        $this->info = [
-            [
-                'title' => 'متابع على التواصل',
-                'value' => '15,000+',
-            ],
-            [
-                'title' => 'كتاب موثّق',
-                'value' => '120+',
-            ],
-            [
-                'title' => 'مقر المؤسسة',
-                'value' => 'النجف الأشرف',
-            ]
-        ];
+        $books = $stats->books_count ?? Book::published()->count() + Publication::published()->count();
 
-        $this->goals = [
-            [
-                'title' => 'جمع التراث',
-                'description' => 'نسعى للحفاظ على التراث الثقافي والتاريخي للأجيال القادمة.',
-            ],
-            [
-                'title' => 'التوثيق الرقمي',
-                'description' => 'نقوم بتوثيق المواد التراثية وتحويلها إلى صيغ رقمية لتسهيل الوصول إليها.',
-            ],
-            [
-                'title' => 'أرشفة المواد',
-                'description' => 'نقوم بأرشفة المواد التراثية بشكل منظم لضمان سهولة البحث والاسترجاع.',
-            ],
-            [
-                'title' => 'نشر الموارد',
-                'description' => 'نهدف إلى نشر الموارد التراثية عبر منصات متعددة لتسهيل الوصول إليها من قبل الباحثين والمهتمين.',
-            ],
-            [
-                'title' => 'دعم الدراسات والبحوث',
-                'description' => 'ندعم الباحثين والطلاب في إجراء الدراسات والبحوث المتعلقة بالتراث الثقافي والتاريخي.',
-            ],
-            [
-                'title' => 'إيصاله للأجيال القادمة',
-                'description' => 'نسعى لضمان أن التراث الثقافي والتاريخي يصل إلى الأجيال القادمة ويظل حيًا في الذاكرة الجماعية.',
-            ]
-        ];
+        return array_values(array_filter([
+            $stats->followers_count ? ['title' => 'متابع على التواصل', 'value' => number_format($stats->followers_count).'+'] : null,
+            $books ? ['title' => 'كتاب وإصدار موثّق', 'value' => number_format($books)] : null,
+            filled($general->headquarters) ? ['title' => 'مقر المؤسسة', 'value' => $general->headquarters] : null,
+        ]));
     }
 
-    public function render()
+    /** The renderer sanitizes the editor's HTML. */
+    protected function rich(?string $body): ?HtmlString
     {
-        return view('livewire.about-us');
+        return filled($body) ? new HtmlString(RichContentRenderer::make($body)->toHtml()) : null;
+    }
+
+    public function render(): View
+    {
+        $general = app(GeneralSettings::class);
+        $pages = Page::published()->whereIn('slug', ['vision', 'mission'])->pluck('body', 'slug');
+
+        return view('livewire.about-us', [
+            'general' => $general,
+            'info' => $this->info($general, app(HomeStatsSettings::class)),
+            'vision' => $this->rich($pages['vision'] ?? null),
+            'mission' => $this->rich($pages['mission'] ?? null),
+            'timeline' => Milestone::ordered()->with('media')->get(),
+        ])->title('عن المؤسسة')->layoutData(['description' => $general->about_summary]);
     }
 }

@@ -2,24 +2,23 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
+     *
+     * The admin seeder is last: it refuses to run without ADMIN_EMAIL and
+     * ADMIN_PASSWORD, and the content seeders should not be blocked by that.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $this->call([
+            CategorySeeder::class,
+            MilestoneSeeder::class,
+            PageSeeder::class,
+            AdminUserSeeder::class,
         ]);
     }
 }

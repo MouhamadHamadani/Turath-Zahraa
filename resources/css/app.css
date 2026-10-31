@@ -3,16 +3,10 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
-@font-face { font-family: 'Cairo'; src: url('/fonts/Cairo/Cairo-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
-@font-face { font-family: 'Cairo'; src: url('/fonts/Cairo/Cairo-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
-@font-face { font-family: 'Cairo'; src: url('/fonts/Cairo/Cairo-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
-@font-face { font-family: 'Cairo'; src: url('/fonts/Cairo/Cairo-ExtraBold.woff2') format('woff2'); font-weight: 800; font-display: swap; }
-@font-face { font-family: 'Cairo'; src: url('/fonts/Cairo/Cairo-Black.woff2') format('woff2'); font-weight: 900; font-display: swap; }
-
-@theme { --font-sans: 'Cairo', ui-sans-serif, system-ui, sans-serif; }
+/* Cairo is declared in public/fonts/Cairo/cairo.css (linked by the layout and the Filament panel). */
 
 @theme {
-    --font-sans: 'cairo', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Cairo', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
     --color-main-bg: #fffdf8;
@@ -29,4 +23,42 @@
     --color-brand-second-dark: #b54c0d;
     --color-brand-text: #241f1a;
     --color-brand-second-text: #7a7263;
+}
+
+/* Alpine: hide elements until x-show has initialised. */
+[x-cloak] {
+    display: none !important;
+}
+
+/* HTML written in the admin rich editor (pages, vision, mission). */
+.rich-content {
+    line-height: 1.9;
+}
+
+.rich-content > * + * {
+    margin-top: 1rem;
+}
+
+.rich-content h2,
+.rich-content h3 {
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+.rich-content ul,
+.rich-content ol {
+    padding-inline-start: 1.5rem;
+}
+
+.rich-content ul {
+    list-style: disc;
+}
+
+.rich-content ol {
+    list-style: decimal;
+}
+
+.rich-content a {
+    color: var(--color-brand);
+    text-decoration: underline;
 }
